@@ -1,0 +1,21 @@
+Options -Indexes
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /webdev/
+    
+    # Jika file atau direktori ada, gunakan itu
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.html [L]
+</IfModule>
+
+# Izinkan akses ke file statis
+<Files ~ "\.(css|js|jpg|jpeg|png|gif|ico)$">
+    Allow from all
+</Files>
+
+# Enable CSS and JavaScript handling
+AddType text/css .css
+AddType text/javascript .js 
